@@ -1,3 +1,7 @@
+<!-- TODO
+    1. /vue/search/Main/index.js에 Vue 인스턴스를 생성하고 불러옴 
+    2. Vue 인스턴스와 연결 할 영역을 선택 후 옵션값으로 선언
+-->
 <!doctype html>
 <html lang="ko">
 <head>
@@ -14,10 +18,27 @@
         
         <!-- 검색어 입력 영역 -->
         <div>
-            <div class="srchbar_wrap">
+            <div class="srchbar_wrap" style="position:inherit;">
                 <div class="srchbar input_txt">
                     <input type="search" title="검색어 입력" placeholder="검색어를 입력해주세요" class="srch_input">
                 </div>
+            </div>
+
+            <!-- 자동완성 -->
+            <div class="srch_kwd_list type3">
+                <h2>혹시 이런걸 찾고 있나요?</h2>
+                <ul>
+                    <li><a><b>다</b></a></li>
+                    <li><a><b>다</b>이어리</a></li>
+                    <li><a><b>다</b>이어리스티커</a></li>
+                    <li><a><b>다</b>이어트</a></li>
+                    <li><a><b>다</b>꾸</a></li>
+                    <li><a><b>다</b>이어리 속지</a></li>
+                    <li><a><b>다</b>이어리 스티커</a></li>
+                    <li><a>발뮤<b>다</b></a></li>
+                    <li><a>아젠<b>다</b></a></li>
+                    <li><a>바<b>다</b></a></li>
+                </ul>
             </div>
 
             <!-- 최근 검색어 -->
@@ -52,6 +73,7 @@
     </div>
 
     <script src="/vue/lib/common.js"></script>
+    
     
 </body>
 </html>
