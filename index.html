@@ -1,12 +1,16 @@
 <!-- TODO
-    1. /vue/search/Main/index.js에 Vue 인스턴스를 생성하고 불러옴 
-    2. 검색어가 비어 있을 경우 자동완성 부분을 숨김
-    3. 검색어를 입력 했을 경우 자동완성을 부분 노출
+    1. 자동완성부분 v-if => keyup 이벤트로 체크
+    2. 최근검색어 json데이터 불러와 v-for로 렌더링
+    3. 검색어 입력 후 엔터 입력 시 최근검색어에 push
+    4. 4개 이상일 경우 마지막꺼 지우고 push
 
     연습
-    1. 검색어 입력 시 자동완성 강조부분(b태그) 검색어로 변경
-    2. 검색어 입력 영역에 .srchbar div 안에 <button class="btn_del"><i class="i_close"></i></button> 태그 추가
-    3. 검색어 입력중이면 button 노출 아니면 숨김
+    1. 모두 지우기 클릭 시 최근검색어 비우고 영역 안보이게 하기
+    2. 베스트 키워드 리스트 best_keywords로부터 가져와 for 돌리기
+    3. 베스트 태그 처리
+        3-1. tag가 +로 시작하고 수치가 100 이상일 경우 hot태그 삽입
+        3-2. tag가 new 일 경우 new태그 삽입
+        3-3. 나머지 경우 태그 없음
 -->
 <!doctype html>
 <html lang="ko">
@@ -31,6 +35,6 @@
 
     <script src="./vue/lib/common.js"></script>
     <script src="./vue/search/Main/index.js"></script>
-    
+
 </body>
 </html>
