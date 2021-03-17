@@ -4,7 +4,8 @@ const app = new Vue({
         <div>
             <div class="srchbar_wrap" style="position:inherit;">
                 <div class="srchbar input_txt">
-                    <input v-model="search_keyword" type="search" title="검색어 입력" placeholder="검색어를 입력해주세요" class="srch_input">
+                    <input type="search" title="검색어 입력" placeholder="검색어를 입력해주세요" class="srch_input"
+                        @input="input_search_keyword">
                     <button v-if="search_keyword" class="btn_del"><i class="i_close"></i></button>
                 </div>
             </div>
@@ -51,6 +52,17 @@ const app = new Vue({
         </div>
     `,
     data() {return {
-        search_keyword : ''
+        search_keyword : '', // 검색어
+        recent_keyword : [] // 최근 검색어 리스트
     }},
+    methods : {
+        /**
+         * 검색어 입력 시 이벤트
+         * data의 search_keyword와 input의 value를 연결
+         * v-model은 한글바인딩이 바로바로 안되서 이런식으로 직접 넣어줌
+         */
+        input_search_keyword(e) {
+            this.search_keyword = e.target.value;
+        }
+    }
 });
