@@ -75,6 +75,9 @@ const app = new Vue({
          */
         enter_search_keyword(e) {
             if( this.search_keyword.trim() !== '' ) { // 빈 문자열이 아닐 때만 unshift
+                if( this.recent_keywords.length >= 4 ) { // 4개 이상이면 마지막꺼 날림
+                    this.recent_keywords.pop();
+                }
                 this.recent_keywords.unshift({'keyword' : this.search_keyword});
             }
             this.clear_search_keyword(e.target); // 검색어 초기화
