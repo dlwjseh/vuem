@@ -25,10 +25,9 @@ const app = new Vue({
             <div class="srch_kwd_list type1">
                 <h2>최근 검색어</h2>
                 <ul>
-                    <li><a>다이어리</a></li>
-                    <li><a>아이패드 파우치</a></li>
-                    <li><a>스누피</a></li>
-                    <li><a>에어팟</a></li>
+                    <li v-for="keyword in recent_keywords">
+                        <a>{{keyword.keyword}}</a>
+                    </li>
                 </ul>
                 <button class="btn_reset">모두 지우기</button>
             </div>
@@ -53,8 +52,12 @@ const app = new Vue({
     `,
     data() {return {
         search_keyword : '', // 검색어
-        recent_keyword : [] // 최근 검색어 리스트
+        recent_keywords : [] // 최근 검색어 리스트
     }},
+    created() {
+        // data.js의 recent_keywords를 가져옴
+        this.recent_keywords = recent_keywords;
+    },
     methods : {
         /**
          * 검색어 입력 시 이벤트
