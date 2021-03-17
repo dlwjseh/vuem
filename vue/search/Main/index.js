@@ -5,7 +5,8 @@ const app = new Vue({
             <div class="srchbar_wrap" style="position:inherit;">
                 <div class="srchbar input_txt">
                     <input type="search" title="검색어 입력" placeholder="검색어를 입력해주세요" class="srch_input"
-                        @input="input_search_keyword">
+                        @input="input_search_keyword"
+                        @keyup.enter="enter_search_keyword">
                     <button v-if="search_keyword" class="btn_del"><i class="i_close"></i></button>
                 </div>
             </div>
@@ -66,6 +67,25 @@ const app = new Vue({
          */
         input_search_keyword(e) {
             this.search_keyword = e.target.value;
+        },
+        /**
+         * 검색어 입력창에서 엔터 입력 시 이벤트
+         * recent_keywords 배열에 추가(처음으로)
+         * ※ 빈 값이면 작동 안함
+         */
+        enter_search_keyword(e) {
+            if( this.search_keyword.trim() !== '' ) { // 빈 문자열이 아닐 때만 unshift
+                this.recent_keywords.unshift({'keyword' : this.search_keyword});
+            }
+            this.clear_search_keyword(e.target); // 검색어 초기화
+        },
+        /**
+         * 검색어 초기화
+         * input value, data의 search_keyword 모두 비워줌
+         */
+        clear_search_keyword(input) {
+            input.value = '';
+            this.search_keyword = '';
         }
     }
 });
